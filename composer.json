@@ -1,0 +1,30 @@
+{
+    "name": "AnhNhan/php-image-dedup",
+    "description": "Dederp my image libraries with PHP power!",
+    "authors": [
+        {
+            "name": "Anh Nhan Nguyen",
+            "email": "anhnhan@outlook.com"
+        }
+    ],
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "AnhNhan/AnLang": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.8.*",
+        "phpunit/php-code-coverage": "1.3.*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/AnhNhan/libphutil"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/AnhNhan/AnLang"
+        }
+    ]
+}
