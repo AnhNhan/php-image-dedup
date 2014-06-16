@@ -108,13 +108,14 @@ class Image
         return new Image($new_img);
     }
 
-    public $dhash_cmp_w = 16;
-    public $dhash_cmp_h = 17;
+    public $dhash_cmp_w = 4;
+    public $dhash_cmp_h = 6;
 
     public function getDHash()
     {
         assert(imageistruecolor($this->_image));
-        $grey_small_img = $this->resizeTo($this->dhash_cmp_w, $this->dhash_cmp_h)->getGreyscale();
+        $greyscale = $this->getGreyscale();
+        $small_img = $greyscale->resizeTo($this->dhash_cmp_w, $this->dhash_cmp_h);
         $hash_field = [];
         $colo_field = [];
         foreach (range(0, $this->dhash_cmp_w - 1) as $w)
@@ -122,12 +123,12 @@ class Image
             foreach (range(0, $this->dhash_cmp_h - 1) as $h)
             {
                 $pos = $w * $this->dhash_cmp_h + $h;
-                $pixel = $grey_small_img->colorAt($w, $h);
+                $pixel = $small_img->colorAt($w, $h);
                 $c = $pixel & 0xFF;
                 $colo_field[$pos] = $c;
                 if (!($w == 0 && $h == 0))
                 {
-                    $hash_field[] = $colo_field[$pos] < $colo_field[$pos - 1];
+                    $hash_field[] = $colo_field[$pos] > $colo_field[$pos - 1];
                 }
             }
         }
