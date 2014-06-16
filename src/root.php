@@ -1,5 +1,19 @@
 <?php
 
+include __DIR__ . '/scan.php';
+
+function scan_and_find_duplicates($path, callable $function)
+{
+    $fileList = scan_dir_for_images($path);
+    YamwLibs\Libs\Cli\Cli::notice(sprintf('Scanning %s ... (%d files)', $path, count($fileList)));
+
+    $hashList = hash_each_file($fileList, $function);
+
+    $duplicateList = igroup($hashList, 'hash');
+
+    return $duplicateList;
+}
+
 /**
  * Gets the absolute root path to where this application resides
  *

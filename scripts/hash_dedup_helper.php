@@ -11,24 +11,8 @@ if ($argc > 1) {
     sdx($argv);
     $path = sdx($argv);
 
+    $duplicateList = scan_and_find_duplicates($path, function ($f) { return @hash_file('sha256', $f); });
 
-    $fileList = scanInDirectory($path, '\.(jpg|png)', true);
-    Cli::notice(sprintf('Scanning %s ... (%d files)', $path, count($fileList)));
-    $hashList = [];
-
-    foreach ($fileList as $file) {
-        $hash = @hash_file('sha256', $file);
-        if (!$hash) {
-            Cli::error("Could not process file '$file'!");
-            continue;
-        }
-        $hashList[] = [
-            'name' => $file,
-            'hash' => $hash,
-        ];
-    }
-
-    $duplicateList = igroup($hashList, 'hash');
     $count = 0;
     foreach ($duplicateList as $hash => $arr) {
         if (count($arr) == 1) {
@@ -57,14 +41,17 @@ if ($argc > 1) {
         $first = sdx($duplicates);
 
         $i = 1;
+        println('  ' . $first['name']);
         foreach ($duplicates as $entry) {
             $oldName = $entry['name'];
             $newName = preg_replace('/\.(jpg|png)$/', '_' . str_pad($i, 3, '0', STR_PAD_LEFT) . '.$1', $first['name']);
-            Cli::notice(sprintf('Renaming %s to %s', Color::yellow($oldName), Color::green($newName)));
-            rename($oldName, $newName);
+            //Cli::notice(sprintf('Renaming %s to %s', Color::yellow($oldName), Color::green($newName)));
+            //rename($oldName, $newName);
+            Cli::notice(sprintf('File %s is a duplicate of %s', Color::yellow($oldName), Color::green($first['name'])));
             ++$i;
         }
 
+        println();
         println();
     }
 } else {
