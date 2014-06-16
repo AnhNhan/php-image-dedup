@@ -20,7 +20,18 @@ if ($argc > 1) {
         }, $dhash));
     }
 
-    $duplicateList = scan_and_find_duplicates($path, function ($f) { return dhash_to_string(Image::createFromFile($f)->getDHash()); });
+    function generate_dhash_from_file($path)
+    {
+        $img = Image::createFromFile($path);
+        if (!$img)
+        {
+            throw new Exception("Could not process file '$path'!");
+        }
+        $hash = dhash_to_string($img->getDHash());
+        return $hash;
+    }
+
+    $duplicateList = scan_and_find_duplicates($path, 'generate_dhash_from_file');
 
     $count = 0;
     foreach ($duplicateList as $hash => $arr) {
