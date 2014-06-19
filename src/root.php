@@ -1,6 +1,7 @@
 <?php
 
-include __DIR__ . '/scan.php';
+include_once __DIR__ . '/helpers.php';
+include_once __DIR__ . '/scan.php';
 
 function scan_and_find_duplicates($path, callable $function)
 {
