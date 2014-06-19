@@ -11,6 +11,8 @@ if ($argc > 1) {
     sdx($argv);
     $path = sdx($argv);
 
+    $time_start = microtime(true);
+
     $duplicateList = scan_and_find_duplicates($path, function ($f) { return @hash_file('sha256', $f); });
 
     $count = 0;
@@ -26,7 +28,6 @@ if ($argc > 1) {
     Cli::success('We have ' . Color::green(count($duplicateList)) .
         ' duplicate groups, with ' . Color::yellow($count) . ' duplicates');
 
-    /*
     foreach ($duplicateList as $duplicate) {
         println(str_repeat('-', 79));
 
@@ -35,25 +36,11 @@ if ($argc > 1) {
         }
 
         println(str_repeat('-', 79));
-    }*/
-
-    foreach ($duplicateList as $duplicates) {
-        $first = sdx($duplicates);
-
-        $i = 1;
-        println('  ' . $first['name']);
-        foreach ($duplicates as $entry) {
-            $oldName = $entry['name'];
-            $newName = preg_replace('/\.(jpg|png)$/', '_' . str_pad($i, 3, '0', STR_PAD_LEFT) . '.$1', $first['name']);
-            //Cli::notice(sprintf('Renaming %s to %s', Color::yellow($oldName), Color::green($newName)));
-            //rename($oldName, $newName);
-            Cli::notice(sprintf('File %s is a duplicate of %s', Color::yellow($oldName), Color::green($first['name'])));
-            ++$i;
-        }
-
-        println();
         println();
     }
+
+    $time_stop  = microtime(true);
+    println('Took ' . round($time_stop - $time_start, 3) . 's.');
 } else {
     // Print non-existing help
     Cli::notice('No input. $1 must be a path!');
