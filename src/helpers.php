@@ -1,5 +1,7 @@
 <?php
 
+use AnhNhan\Imagery\Image;
+
 function dhash_to_string(array $dhash)
 {
     return implode('', array_map(function ($n) {
@@ -15,5 +17,6 @@ function generate_dhash_from_file($path)
         return;
     }
     $hash = dhash_to_string($img->getDHash());
+    unset($img);
     return $hash;
 }
