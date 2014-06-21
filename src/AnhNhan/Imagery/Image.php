@@ -108,8 +108,8 @@ class Image
         return new Image($new_img);
     }
 
-    public $dhash_cmp_w = 4;
-    public $dhash_cmp_h = 6;
+    public $dhash_cmp_w = 9;
+    public $dhash_cmp_h = 8;
 
     public function getDHash()
     {
@@ -126,12 +126,14 @@ class Image
                 $pixel = $small_img->colorAt($w, $h);
                 $c = $pixel & 0xFF;
                 $colo_field[$pos] = $c;
-                if (!($w == 0 && $h == 0))
+                if ($w != 0)
                 {
                     $hash_field[] = $colo_field[$pos] > $colo_field[$pos - 1];
                 }
             }
         }
+        unset($greyscale);
+        unset($small_img);
         return $hash_field;
     }
 }
