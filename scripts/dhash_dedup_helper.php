@@ -27,6 +27,7 @@ if ($argc > 1) {
         }
     }
 
+    println();
     Cli::success('We have ' . Color::green(count($duplicateList)) .
         ' duplicate groups, with ' . Color::yellow($count) . ' duplicates');
 

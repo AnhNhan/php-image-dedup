@@ -14,9 +14,11 @@ function generate_dhash_from_file($path)
     $img = Image::createFromFile($path);
     if (!$img)
     {
+        echo 'F';
         return;
     }
     $hash = dhash_to_string($img->getDHash());
     unset($img);
+    echo '.';
     return $hash;
 }
