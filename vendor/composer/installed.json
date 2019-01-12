@@ -1,0 +1,191 @@
+[
+    {
+        "name": "apexstudios/yamwlib",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/apexstudios/yamwlib.git",
+            "reference": "0a4bd16e97035217c8625a14cb16be38d0d3fb53"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/apexstudios/yamwlib/zipball/0a4bd16e97035217c8625a14cb16be38d0d3fb53",
+            "reference": "0a4bd16e97035217c8625a14cb16be38d0d3fb53",
+            "shasum": ""
+        },
+        "require": {
+            "leafo/lessphp": "*",
+            "nikic/php-parser": "*",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/php-code-coverage": "*",
+            "phpunit/phpunit": ">=3.6",
+            "satooshi/php-coveralls": "*"
+        },
+        "time": "2014-05-22T20:50:30+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "YamwLibs": "src/"
+            }
+        },
+        "authors": [
+            {
+                "name": "Anh Nhan Nguyen",
+                "email": "anhnhan@outlook.com"
+            }
+        ],
+        "homepage": "http://github.com/apexstudios/yamwlib",
+        "support": {
+            "source": "https://github.com/apexstudios/yamwlib/tree/master"
+        }
+    },
+    {
+        "name": "facebook/libphutil",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/AnhNhan/libphutil.git",
+            "reference": "e21f2bbd2cdcc3df29cc905173e3079629c64314"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/AnhNhan/libphutil/zipball/e21f2bbd2cdcc3df29cc905173e3079629c64314",
+            "reference": "e21f2bbd2cdcc3df29cc905173e3079629c64314",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3"
+        },
+        "suggest": {
+            "ext-mbstring": "Faster and more powerful UTF-8",
+            "ext-mysqli": "To utilize the mighty power of the Aphront web stack",
+            "ext-pcntl": "To make use of phutil daemons"
+        },
+        "time": "2014-01-22T14:13:42+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "src/__phutil_library_init__.php"
+            ]
+        },
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Evan Priestley"
+            }
+        ],
+        "description": "libphutil is a collection of utility classes and functions for PHP.",
+        "homepage": "http://github.com/facebook/libphutil",
+        "keywords": [
+            "daemon",
+            "database",
+            "event",
+            "remarkup",
+            "utf8",
+            "utility",
+            "xsprintf"
+        ],
+        "support": {
+            "issues": "https://secure.phabricator.com/maniphest/",
+            "source": "https://github.com/AnhNhan/libphutil/tree/master"
+        }
+    },
+    {
+        "name": "leafo/lessphp",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/leafo/lessphp.git",
+            "reference": "011afcca8e6f1000a6e789921ba805fa578271a3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/leafo/lessphp/zipball/011afcca8e6f1000a6e789921ba805fa578271a3",
+            "reference": "011afcca8e6f1000a6e789921ba805fa578271a3",
+            "shasum": ""
+        },
+        "time": "2014-04-27T02:56:30+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.4.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "lessc.inc.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Leaf Corcoran",
+                "email": "leafot@gmail.com",
+                "homepage": "http://leafo.net"
+            }
+        ],
+        "description": "lessphp is a compiler for LESS written in PHP.",
+        "homepage": "http://leafo.net/lessphp/"
+    },
+    {
+        "name": "nikic/php-parser",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nikic/PHP-Parser.git",
+            "reference": "2e195d7cb2deebfd2f31e63bdd442bb235bd0149"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/2e195d7cb2deebfd2f31e63bdd442bb235bd0149",
+            "reference": "2e195d7cb2deebfd2f31e63bdd442bb235bd0149",
+            "shasum": ""
+        },
+        "require": {
+            "ext-tokenizer": "*",
+            "php": ">=5.3"
+        },
+        "time": "2014-04-21T09:15:33+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "lib/bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Nikita Popov"
+            }
+        ],
+        "description": "A PHP parser written in PHP",
+        "keywords": [
+            "parser",
+            "php"
+        ]
+    }
+]
