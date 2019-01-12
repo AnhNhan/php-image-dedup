@@ -13,8 +13,14 @@ if ($argc > 1) {
     sdx($argv);
     $path = sdx($argv);
 
+    $format = 'binary';
+    if ($i_format = sdx($argv)) {
+        $format = $i_format;
+    }
+
     $img = Image::createFromFile($path);
-    $hash = dhash_to_string($img->getDHash());
+    $dhash = $img->getDHash();
+    $hash = $format == 'binary' ? dhash_to_string($dhash) : dhash_to_int($dhash);
     println($hash);
 } else {
     // Print non-existing help
